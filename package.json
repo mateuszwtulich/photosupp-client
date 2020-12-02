@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --target=production"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^10.2.3",
     "@angular/cdk": "^11.0.0",
+    "@angular/cli": "~10.2.0",
     "@angular/common": "~10.2.0",
     "@angular/compiler": "~10.2.0",
+    "@angular/compiler-cli": "~10.2.0",
     "@angular/core": "~10.2.0",
     "@angular/forms": "~10.2.0",
     "@angular/material": "^11.0.0",
@@ -28,11 +31,13 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "angular-gallery": "^1.0.2",
+    "express": "^4.17.1",
     "jwt-decode": "^3.1.2",
     "ngx-permissions": "^8.1.1",
     "rxjs": "~6.6.0",
     "screenfull": "^3.3.3",
     "tslib": "^2.0.0",
+    "typescript": "~4.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -54,5 +59,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "engines": {
+    "node": "12.19.0",
+    "npm": "6.14.8"
   }
 }
