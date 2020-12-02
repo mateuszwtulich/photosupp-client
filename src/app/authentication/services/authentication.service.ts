@@ -5,10 +5,9 @@ import { Router } from '@angular/router';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Credentials } from '../to/Authorization';
-import jwtDecode, * as jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 import { TranslateService } from '@ngx-translate/core';
 import { CoreRestServicePaths } from 'src/app/core/rest-service-paths/CoreRestServicePaths';
-import { BackendApiServicePath } from 'src/app/pricing/rest-service-paths/BackendApiServicePath';
 import { LocalStorageService } from 'src/app/shared/cache/localStorage.service';
 
 @Injectable({
@@ -43,7 +42,7 @@ import { LocalStorageService } from 'src/app/shared/cache/localStorage.service';
         this.spinnerDataSource.next(true);
         this.login(credentials).subscribe((data: Response) => {
           const token: string = data.headers.get('Authorization');
-          const decodedToken: object = jwtDecode(token);
+          const decodedToken: object = jwt_decode(token);
           this.localStorageService.setToken(token);
           this.localStorageService.setAuthInfo(this.localStorageService.parseHeaderToAuthInfo(decodedToken));
           this.localStorageService.setBasicAuthority();

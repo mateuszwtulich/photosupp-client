@@ -7,7 +7,7 @@ import { ApplicationPermission } from '../shared/utils/ApplicationPermission';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+    constructor( private localStorageService: LocalStorageService) {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

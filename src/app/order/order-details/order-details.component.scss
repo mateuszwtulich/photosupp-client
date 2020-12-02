@@ -1,3 +1,13 @@
+.spinner-wrapper {
+        position: absolute !important;
+        width: 100% !important;
+        height: 80% !important;
+        z-index: 3;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 #header{
     margin-top: 1%;
     margin-bottom: 1%;
@@ -32,17 +42,6 @@
     justify-content: center;
     margin-bottom: 5%;
     margin-top: 1%;
-
-        .spinner-wrapper {
-        position: absolute !important;
-        width: 100% !important;
-        height: 80% !important;
-        z-index: 3;
-        background-color: rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
 
         ::ng-deep .mat-card {
             border-color: white !important;

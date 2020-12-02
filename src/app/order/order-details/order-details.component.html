@@ -1,5 +1,9 @@
-<mat-tab-group mat-align-tabs="start" color="accent" *ngIf="orderControl.valid">
-  <mat-tab label="{{ 'orders.details' | translate}}" color="accent">
+<div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+<mat-tab-group mat-align-tabs="start" color="accent">
+
+  <mat-tab label="{{ 'orders.details' | translate}}" color="accent" *ngIf="orderControl.valid">
     <div id="header">
       <button id="modify" *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS']" mat-mini-fab color="primary"
         aria-label="Modify button" [disabled]="order.status.includes('FINISHED') || order.status.includes('TO_VERIFY')"
@@ -15,9 +19,6 @@
 
     <div class="update-container">
       <mat-card class="update-card margin-top-0">
-        <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
-          <mat-spinner color="accent"></mat-spinner>
-        </div>
         <mat-card-title class="card-title"> {{ 'orders.details' | translate}} </mat-card-title>
         <mat-divider></mat-divider>
         <mat-card-content class="content">
@@ -113,7 +114,7 @@
       </mat-card>
     </div>
   </mat-tab>
-  <mat-tab label="{{ 'orders.content' | translate}}" color="accent">
+  <mat-tab label="{{ 'orders.content' | translate}}" color="accent"  *ngIf="orderControl.valid">
     <div class="content-container">
       <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
         <mat-spinner color="accent"></mat-spinner>
@@ -175,7 +176,7 @@
       </div>
     </div>
   </mat-tab>
-  <mat-tab label="{{ 'orders.comments' | translate}}" color="accent">
+  <mat-tab label="{{ 'orders.comments' | translate}}" color="accent"  *ngIf="orderControl.valid">
     <div class="update-container">
       <mat-card class="width-card">
         <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">

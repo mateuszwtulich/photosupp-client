@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
-    },
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^10.2.3",
@@ -30,6 +30,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "angular-gallery": "^1.0.2",
+    "angular-http-server": "^1.9.0",
     "express": "^4.17.1",
     "jwt-decode": "^3.1.2",
     "ngx-permissions": "^8.1.1",

@@ -15,7 +15,7 @@ import { ServicehandlingModule } from './servicehandling/servicehandling.module'
 import { UsermanagementModule } from './usermanagement/usermanagement.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -51,10 +51,11 @@ import { TokenInterceptor } from './authentication/tokenInterceptor';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-          useFactory: HttpLoaderFactory, // exported factory function needed for AoT compilation
-          deps: [HttpClient]
+          useFactory: HttpLoaderFactory,
+          deps: [HttpBackend]
       }
-    })  ],
+    })
+    ],
   bootstrap: [AppComponent],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
@@ -76,8 +77,8 @@ export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-  export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+  export function HttpLoaderFactory(backend: HttpBackend) {
+    return new TranslateHttpLoader(new HttpClient(backend));
 }
 
 function appInitializerFactory(translateService: TranslateService) {
