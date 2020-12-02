@@ -1,0 +1,13 @@
+<div id="container">
+    <div id="header" >
+        <mat-chip-list aria-label="Language selection" id="fast-filters">
+            <mat-chip color="accent" selected (click)="filterEvents('ALL')">{{ 'table.all' | translate}}</mat-chip>
+            <mat-chip color="accent" *ngxPermissionsOnly="['AUTH_USER']" selected (click)="filterEvents('MINE')">{{ 'bookings.mine' | translate}}</mat-chip>
+            <mat-chip color="accent" selected (click)="filterEvents('confirmed')"> {{'bookings.confirmed' | translate}} </mat-chip>
+            <mat-chip color="primary" selected (click)="filterEvents('unconfirmed')">{{'bookings.unconfirmed' | translate}} </mat-chip>
+          </mat-chip-list>
+  </div>
+    <div id="full-calendar-wrapper">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+</div>

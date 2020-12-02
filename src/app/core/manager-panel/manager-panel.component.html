@@ -1,0 +1,92 @@
+<mat-grid-list id="manager-panel" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS', 'A_CRUD_BOOKINS']">
+        <div class="mat-container left-card top-card">
+            <mat-card routerLink="orders" app-material-elevation [default-elevation]="defaultElevation"
+                raised-elevation="raisedElevation">
+                <mat-card-header>
+                    <div class="header">
+                        <mat-icon>list_alt</mat-icon>
+                        <mat-card-title>{{ 'sidenav.list_alt' | translate }}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{ 'manager.orders' | translate }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_SERVICES', 'A_CRUD_INDICATORS']">
+        <div class="mat-container right-card top-card">
+            <mat-card routerLink="services" app-material-elevation [default-elevation]="defaultElevation"
+                raised-elevation="raisedElevation">
+                <mat-card-header>
+                    <div class="header">
+                        <mat-icon>design_services</mat-icon>
+                        <mat-card-title>{{ 'sidenav.design_services' | translate }}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{ 'manager.services' | translate }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS', 'A_CRUD_BOOKINGS']">
+        <div class="mat-container left-card middle-card">
+            <mat-card routerLink="scheduler" app-material-elevation [default-elevation]="defaultElevation"
+                raised-elevation="raisedElevation">
+                <mat-card-header>
+                    <div class="header">
+                        <mat-icon>calendar_today</mat-icon>
+                        <mat-card-title>{{ 'sidenav.calendar_today' | translate }}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{ 'manager.scheduler' | translate }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngxPermissionsOnly="['A_CRUD_SUPER', 'AUTH_USER']">
+        <div class="mat-container right-card middle-card">
+            <mat-card routerLink="user/details" app-material-elevation [default-elevation]="defaultElevation"
+                raised-elevation="raisedElevation">
+                <mat-card-header>
+                    <div class="header">
+                        <mat-icon>account_circle</mat-icon>
+                        <mat-card-title>{{ 'sidenav.account_circle' | translate }}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{ 'manager.settings' | translate }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ROLES', 'A_CRUD_USERS']">
+        <div class="mat-container left-card bottom-card">
+            <mat-card class="left-card bottom-card" routerLink="user/overview" app-material-elevation
+                [default-elevation]="defaultElevation" raised-elevation="raisedElevation">
+                <mat-card-header>
+                    <div class="header">
+                        <mat-icon>supervised_user_circle</mat-icon>
+                        <mat-card-title>{{ 'sidenav.supervised_user_circle' | translate }}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{ 'manager.users' | translate }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,75 @@
+
+#header{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    display: flex;
+    flex-direction: row;
+
+    #add-service{
+        margin-right: 0%;
+        margin-left: auto;
+
+        #icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+    }
+}
+
+
+#services-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+
+    .spinner-wrapper {
+      position: absolute !important;
+      width: 100% !important;
+      height: 90% !important;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #table-wrapper {
+      width: 85%;
+
+      table{
+        width: 100%;
+
+        td:nth-child(1) {
+            width: calc(15%) !important;
+            padding-right: 1%;
+          }
+
+        td:nth-child(4) {
+          width: calc(10%) !important;
+        }
+        td:nth-child(2) {
+            width: calc(10%) !important;
+          }
+          td:nth-child(3) {
+            width: calc(45%) !important;
+            padding-top: 1%;
+            padding-bottom: 1%;
+          }
+          td:nth-child(5) {
+            width: calc(10%) !important;
+          }
+      }
+
+      mat-paginator {
+        width: 100%;
+      }
+    }
+      .mat-form-field {
+        font-size: 14px;
+        width: 85%;
+      }
+}

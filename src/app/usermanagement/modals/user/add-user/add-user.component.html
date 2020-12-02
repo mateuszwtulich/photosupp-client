@@ -1,0 +1,40 @@
+<div id="dialog">
+    <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div id="modal-top">
+        <h2 class="mat-h2">{{ 'users.add' | translate }}</h2>
+        <button id="close" mat-icon-button (click)="closeDialog()">
+            <mat-icon class="material-icons">close</mat-icon>
+        </button>
+    </div>
+
+    <div id="content">
+        <form (ngSubmit)="addUser()">
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.name' | translate }}</mat-label>
+                <input matInput [formControl]="nameControl" name="name" required>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.surname' | translate }}</mat-label>
+                <input matInput [formControl]="surnameControl" name="surname" required>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.email' | translate }}</mat-label>
+                <input matInput [formControl]="emailControl" name="email" required>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.role' | translate }}</mat-label>
+                <mat-select [formControl]="roleControl" required>
+                    <mat-option *ngFor="let role of roles" [value]="role">{{ 'users.' + role.name.toLowerCase() | translate}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="button-wrapper">
+
+                <button id="add" mat-flat-button type="submit" color="accent">{{ 'dialog.add' | translate}}</button>
+            </div>
+        </form>
+    </div>
+</div>

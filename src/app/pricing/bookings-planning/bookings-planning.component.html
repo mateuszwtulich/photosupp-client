@@ -1,0 +1,263 @@
+<div id="planning-container">
+  <mat-horizontal-stepper linear #stepper id="stepper">
+    <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+      <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <mat-step [stepControl]="dateFormGroup">
+      <form [formGroup]="dateFormGroup">
+        <ng-template matStepLabel>{{ 'bookings.1st-step' | translate }}</ng-template>
+        <div id="">
+          <cf-scheduler></cf-scheduler>
+          <button mat-raised-button color="accent" matStepperNext
+            class="button">{{ 'pricing.next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>{{ 'pricing.1st-step' | translate }}</ng-template>
+        <mat-list *ngFor="let service of services">
+          <mat-list-item class="mat-elevation-z4">
+  
+            <div matLine class="top">
+              <div class="title">
+                <mat-radio-group id="radio-group" formControlName="firstCtrl">
+                  <mat-radio-button [value]="service" (click)="setService(service)">{{service.name}} </mat-radio-button>
+                </mat-radio-group>
+              </div>
+  
+              <div class="price">
+                <mat-chip-list>
+                  <mat-chip color="primary" selected>{{(service.basePrice * 0.8).toFixed()}} -
+                    {{(service.basePrice * 1.2).toFixed()}} PLN</mat-chip>
+                </mat-chip-list>
+              </div>
+  
+            </div>
+            <p matLine class="description" color="primary">{{service.description}}</p>
+  
+          </mat-list-item>
+        </mat-list>
+        <div>
+          <button mat-raised-button color="accent" matStepperNext class="button">{{ 'pricing.next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>{{ 'pricing.2nd-step' | translate }}</ng-template>
+        <mat-list *ngIf="firstFormGroup.controls['firstCtrl'].value">
+          <mat-list-item
+            *ngFor="let indicator of firstFormGroup.controls['firstCtrl'].value.indicatorEtoList; let i = index"
+            [attr.data-index]="i" class="mat-elevation-z4">
+  
+            <div matLine class="top">
+              <div class="title">
+                <p id="name">{{indicator.name}}: </p>
+                <mat-chip-list>
+                  <mat-chip color="primary" selected> {{priceIndicators[i].amount}}</mat-chip>
+                </mat-chip-list>
+              </div>
+  
+              <div id="indicator-slider">
+                <mat-slider thumbLabel [min]="indicator.baseAmount" [max]="indicator.baseAmount*8" [tickInterval]="1"
+                  [(value)]="priceIndicators[i].amount" name="indicator.id" [vertical]="vertical">
+                </mat-slider>
+              </div>
+  
+              <div class="price">
+                <mat-chip-list>
+                  <mat-chip color="primary" selected>+{{calculateTheIndicatorCost(i, indicator)}} PLN</mat-chip>
+                </mat-chip-list>
+  
+              </div>
+            </div>
+  
+            <p matLine color="primary" class="description">{{indicator.description}}</p>
+  
+          </mat-list-item>
+        </mat-list>
+        <div>
+          <button mat-raised-button class="back" color="accent" matStepperPrevious>{{ 'pricing.back' | translate }}</button>
+          <button mat-raised-button color="accent" matStepperNext>{{ 'pricing.next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="addressFormGroup">
+      <form [formGroup]="addressFormGroup">
+        <ng-template matStepLabel>{{ 'bookings.information' | translate }}</ng-template>
+        <div class="update-container">
+          <mat-card class="update-card">
+            <mat-card-title class="card-title"> {{ 'bookings.information' | translate }} </mat-card-title>
+            <mat-card-content>
+              <div class="mat-form-container information-content">
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'bookings.name' | translate }} </mat-label>
+                  <input matInput formControlName="nameCtrl" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'bookings.description' | translate }} </mat-label>
+                  <input matInput formControlName="descriptionCtrl">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'address.city' | translate }} </mat-label>
+                  <input matInput formControlName="cityCtrl" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'address.street' | translate }} </mat-label>
+                  <input matInput formControlName="streetCtrl" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'address.buildingNumber' | translate }} </mat-label>
+                  <input matInput formControlName="buildingNumberCtrl" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'address.apartmentNumber' | translate }} </mat-label>
+                  <input matInput formControlName="apartmentNumberCtrl">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                  <mat-label> {{ 'address.postalCode' | translate }} </mat-label>
+                  <input matInput formControlName="postalCodeCtrl" required>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div>
+          <button mat-raised-button class="back" color="accent"
+            matStepperPrevious>{{ 'pricing.back' | translate }}</button>
+          <button mat-raised-button color="accent" matStepperNext (click)="goToLastStep()">{{ 'pricing.next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>{{ 'bookings.last-step' | translate }}</ng-template>
+      <div *ngIf="addressFormGroup.valid" class="header">
+
+        <div id="pricing-end">
+          <p id="pricing-title">{{ 'pricing.calculation' | translate }}</p>
+          <mat-chip-list>
+            <mat-chip color="primary" selected> {{ (calculateThePredictedCost() * 0.8).toFixed() }} -
+              {{ (calculateThePredictedCost() * 1.2).toFixed() }} PLN</mat-chip>
+          </mat-chip-list>
+        </div>
+
+        <div id="warning">
+          <p>{{ 'pricing.warning' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="update-container" *ngIf="bookingControl.valid">
+        <mat-card class="update-card margin-top-0">
+          <mat-card-title class="card-title"> {{ 'bookings.details' | translate}} </mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-content id="content">
+            <mat-list>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.name' | translate}}:</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.name}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.description' | translate}}:</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.description}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.service' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.serviceEto.name}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.address' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.addressEto.street}} {{booking.addressEto.buildingNumber}},
+                  {{booking.addressEto.postalCode}} {{booking.addressEto.city}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.user' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.userEto.name}} {{booking.userEto.surname}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.isConfirmed' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field" *ngIf="booking.isConfirmed;else defaultValue">
+                  {{'bookings.confirmed' | translate}}
+                </div>
+                <ng-template #defaultValue>{{'bookings.unconfirmed' | translate}}</ng-template>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.predictedPrice' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{ calculateThePredictedCost().toFixed() }} PLN </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.start' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.start}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <div class="title">
+                  <mat-chip-list [formControl]="bookingControl">
+                    <mat-chip>{{ 'bookings.end' | translate}}:
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="field"> {{booking.end}} </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+            <div class="mat-form-container">
+              <button mat-raised-button color="accent" class="start-button" (click)="createBooking()">
+                {{ 'bookings.save' | translate }} </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <button mat-raised-button class="back" color="accent"
+          matStepperPrevious>{{ 'pricing.back' | translate }}</button>
+        <button mat-raised-button color="accent" (click)="stepper.reset()">{{ 'pricing.reset' | translate }}</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

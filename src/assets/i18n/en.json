@@ -1,0 +1,246 @@
+{
+  "pl": "Polish",
+  "en": "English",
+  "welcomeMessage": "Welcome in",
+  "system": "Photosupp",
+  "subtitleMessage": "We make cooperation with inviu.pl easier",
+  "login": {
+    "username": "Username",
+    "title": "Signing in",
+    "button": "Sign in",
+    "password-message": "If you forget the password, you can change it. New password will be send on your e-mail.",
+    "error": "The username or password are incorrect."
+  },
+  "pricing": {
+    "title": "Estimate your service now!",
+    "1st-step": "Choose service",
+    "2nd-step": "Factor everything in",
+    "3rd-step": "Calculate the cost",
+    "calculation": "Preliminary calculation: ",
+    "warning": "REMEMBER! This is estimated cost. In order to settle final price you need to contact with the owner of Inviu",
+    "next": "Next",
+    "back": "Back",
+    "reset": "Reset"
+  },
+  "company": {
+    "owner": {
+      "quot": {
+        "1st-part": "Quality of services is our highest priority. Photosupp system underlines our presence in the world of the newest technologies.",
+        "2nd-part": "We can help you with choosing a service that suits you the most, without registration!"
+      },
+      "name": "Name Surname",
+      "title": "The owner of photographic company"
+    }
+  },
+  "system-statement": {
+    "title": "Photosupp system provides System Photosupp guidance while taking advantage of photographic company services:",
+    "advantage": {
+      "1st": "Help with choosing apriopriate service for your needs and enables you to book a meeting.",
+      "2nd": "Provides access to order realisation and verification.",
+      "3rd": "Shares the posibility to simply download your product after acceptance from your side!"
+    }
+  },
+  "registration": {
+    "title": "Registration",
+    "hint": "Maximum is 10 characters",
+    "subtitle": "If you have not done it yet, register in order to take advantage of all the possibilities provided by photosupp.",
+    "name": "Your name",
+    "surname": "Your surname",
+    "email": "E-mail address",
+    "password-1st": "Password",
+    "password-2nd": "Retype password",
+    "button": "Register",
+    "login-message": "Log in, in case you are already registered.",
+    "email-null": "You must enter a value",
+    "email-invalid": "Not a valid email",
+    "enter-password": "You have to enter password",
+    "password-not-match": "The password do not match each other",
+    "email-not-match": "The e-mail addresses do not much each other",
+    "check-mailbox": "Check your mailbox in order to verify your account"
+  },
+  "sidenav": {
+    "login": "Sign in",
+    "account_box": "Register",
+    "calculate": "Calculate price",
+    "home": "Main panel",
+    "book_online": "Book a service",
+    "list_alt": "Orders",
+    "calendar_today": "Scheduler",
+    "account_circle": "Settings",
+    "power_settings_new": "Sign out",
+    "exit_to_app": "Sign out",
+    "design_services": "Services",
+    "supervised_user_circle": "Users"
+  },
+  "password": {
+    "title": "Change the password",
+    "button": "Change the pasword"
+  },
+  "client": {
+    "booking": "Thanks to this functionality you can estimate cost of service that you are interested in and make an appointment in suitable time.",
+    "orders": "This funcionality provides preview of all your orders: finished, planned or in progress. When you choose specific order you can check current state of the order, comment on this, verify the product or download the final version of it.",
+    "scheduler": "Preview of the calendar allows you to edit time of planned appointments, previewing all currently unavailable dates.",
+    "settings": "Here you can update your personal data, e-mail address or change the password."
+  },
+  "manager": {
+    "orders": "This funcionality provides preview of all your orders: finished, planned or in progress. When you choose specific order you can update state of order, comment the progress, add the preliminary version of product or share the full version of it.",
+    "scheduler": "Preview of the calendar allows you to edit time of planned appointments, previewing all currently unavailable dates.",
+    "settings": "Here you can update your personal data, e-mail address or change the password.",
+    "users": "This functionality allows you to preview all currently registrated users, update role or edit it.",
+    "services": "Here you can manage all of yours services and create indicators that affects order final price."
+  },
+  "table": {
+    "actions": "Actions",
+    "filter": "Filter...",
+    "pagination": "Items per page",
+    "filter-null": "No data matching filter: ",
+    "filter-example": "Example value",
+    "pl": "Polish",
+    "en": "English",
+    "all": "All",
+    "language": "Language",
+    "name": "Name",
+    "name-second": "Name in foreign language",
+    "locale-add": "Foreign language",
+    "delete": "Are you sure?",
+    "cancel": "Cancel",
+    "delete-confirm": "Delete"
+  },
+  "orders": {
+    "plural": "Orders",
+    "orderNumber": "Order number",
+    "coordinator": "Coordinator",
+    "user": "User",
+    "status": "Status",
+    "booking": "Booking",
+    "booking-null": "No value",
+    "price": "Price",
+    "createdAt": "Created at",
+    "all": "All",
+    "NEW": "New",
+    "IN_PROGRESS": "In progress",
+    "TO_VERIFY": "To verify",
+    "FINISHED": "Finished",
+    "details": "Order details",
+    "comments": "Comments",
+    "content": "Content",
+    "gallery": "Gallery",
+    "add-comment": "Comments",
+    "comment-button": "Add comment",
+    "comment-write": "Write comment",
+    "verify": "Verify the order",
+    "inprogress": "Start the order",
+    "finish": "Finish the order",
+    "add": "Create new order",
+    "modify": "Update the order"
+  },
+  "bookings": {
+    "plural": "Bookings",
+    "name": "Name",
+    "service": "Service",
+    "user": "User",
+    "isConfirmed": "Is confirmed",
+    "start": "Start",
+    "end": "End",
+    "address": "Address",
+    "predictedPrice": "Predicted price",
+    "true": "Yes",
+    "fales": "No",
+    "all": "All",
+    "confirmed": "Confirmed",
+    "unconfirmed": "Unconfirmed",
+    "1st-step": "Choose free meeting date",
+    "last-step": "Create booking",
+    "details": "Booking details",
+    "description": "Description",
+    "indicators": "Indicators increasing the price",
+    "indicator-amount": "Amount",
+    "indicator-price": "Extra price",
+    "start-booking": "Accept the booking",
+    "information": "Give an information",
+    "save": "Create the booking",
+    "mine": "Mine",
+    "add": "Create new booking",
+    "modify": "Update the booking"
+  },
+  "services": {
+    "plural": "Services",
+    "basePrice": "Base price",
+    "indicators": "Indicators affecting the price",
+    "modify": "Update the service",
+    "add": "Create new service"
+  },
+  "indicators": {
+    "plural": "Indicators",
+    "description": "Description",
+    "baseAmount": "Free amount from extra charge",
+    "doublePrice": "Extra price for double amount",
+    "add": "Create new indicator",
+    "description-second": "Description in foreign language",
+    "modify": "Update the indicator"
+  },
+  "users": {
+    "plural": "Users",
+    "name": "Name",
+    "surname": "Surname",
+    "username": "Username",
+    "email": "E-mail address",
+    "isActivated": "Is activated",
+    "role": "Role",
+    "manager": "Manager",
+    "admin": "Administrator",
+    "user": "User",
+    "false": "Yes",
+    "true": "No",
+    "personal-data": "Personal data",
+    "password-update": "Password update",
+    "email-update": "E-mail address update",
+    "new-password-1st": "New password",
+    "new-password-2nd": "Retype new password",
+    "email-1st": "New e-mail address",
+    "email-2nd": "Retype e-mail address",
+    "password-button": "Update password",
+    "email-button": "Update e-mail address",
+    "modify": "Update your personal data",
+    "modified": "Personal date has been updated.",
+    "check-mailbox": "Chech your mailbox. Personal data has been changed.",
+    "add": "Create new user"
+  },
+  "roles": {
+    "plural": "Roles",
+    "description": "Description",
+    "permissions": "Permissions",
+    "add": "Create new role",
+    "modify": "Update the role"
+  },
+  "permissions": {
+    "A_CRUD_SUPER": "Administrator",
+    "A_CRUD_USERS": "User management",
+    "A_CRUD_ROLES": "User roles",
+    "A_CRUD_SERVICES": "User services",
+    "A_CRUD_BOOKINGS": "User bookings",
+    "A_CRUD_INDICATORS": "User indicators",
+    "A_CRUD_ORDERS": "User orders",
+    "AUTH_USER": "Client"
+  },
+  "mediaContent": {
+    "type": "Type",
+    "name": "Name",
+    "IMAGE": "Image",
+    "VIDEO": "Video"
+  },
+  "address": {
+    "city": "City",
+    "street": "Street",
+    "buildingNumber": "Building number",
+    "apartmentNumber": "Apartment number",
+    "postalCode": "Postal code"
+  },
+  "dialog": {
+    "modify": "Update",
+    "add": "Create"
+  },
+  "server": {
+    "error": "Error"
+  }
+}

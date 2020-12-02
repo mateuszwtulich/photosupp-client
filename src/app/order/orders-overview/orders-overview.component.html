@@ -1,0 +1,114 @@
+<mat-tab-group mat-align-tabs="start" color="accent">
+  <mat-tab label="{{ 'orders.plural' | translate}}" color="accent">
+    <div id="header">
+      <mat-chip-list aria-label="Status selection" id="fast-filters">
+        <mat-chip color="accent" selected (click)="filterStatus('ALL')"> {{ 'orders.all' | translate}} </mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('NEW')"> {{ 'orders.NEW' | translate}} </mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('IN_PROGRESS')"> {{ 'orders.IN_PROGRESS' | translate}}
+        </mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('TO_VERIFY')"> {{ 'orders.TO_VERIFY' | translate}}
+        </mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('FINISHED')"> {{ 'orders.FINISHED' | translate}}
+        </mat-chip>
+      </mat-chip-list>
+      <button *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS']" id="add-order" mat-mini-fab color="primary"
+        aria-label="Add order button" (click)="addOrder()">
+        <mat-icon id="icon">add</mat-icon>
+      </button>
+    </div>
+    <div id="orders-table">
+      <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <mat-form-field>
+        <mat-label>{{ 'table.filter' | translate}}</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'table.filter-example' | translate}}" #input>
+      </mat-form-field>
+      <div id="table-wrapper" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+          <ng-container matColumnDef="orderNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.orderNumber' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list>
+                <mat-chip color="accent" selected (click)="navigateToOrderDetails(element.orderNumber)">
+                  {{element.orderNumber}} </mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.user' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.user.name}} {{element.user.surname}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="coordinator">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.coordinator' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.coordinator.name}} {{element.coordinator.surname}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.status' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon id="icon">feedback</mat-icon> {{ 'orders.' + element.status | translate}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="booking">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.booking' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+              <ng-container *ngIf="element.booking;else defaultValue">
+                <mat-chip-list>
+                  <mat-chip color="accent" selected (click)="navigateToBookingDetails(element.booking.id)">
+                    {{element.booking.name}} </mat-chip>
+                </mat-chip-list>
+
+              </ng-container>
+            </td>
+            <ng-template #defaultValue>
+              {{ 'orders.booking-null' | translate}}
+            </ng-template>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.price' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} PLN</td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'orders.createdAt' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions" *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS']">
+            <th mat-header-cell *matHeaderCellDef>{{ 'table.actions' | translate}}</th>
+            <td mat-cell *matCellDef="let element" class="actions-container">
+              <div>
+                <div>
+                  <button mat-icon-button color="primary" (click)="modifyOrder(element)"
+                    [disabled]="element.status.includes('FINISHED') || element.status.includes('TO_VERIFY')">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteOrder(element)"
+                    [disabled]="element.status.includes('IN_PROGRESS') || element.status.includes('TO_VERIFY')">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+      </div>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="{{ 'bookings.plural' | translate}}" color="accent">
+    <cf-bookings-overview></cf-bookings-overview>
+  </mat-tab>
+  <mat-icon>add_box</mat-icon>
+</mat-tab-group>

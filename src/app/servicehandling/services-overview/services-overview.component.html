@@ -1,0 +1,78 @@
+<mat-tab-group mat-align-tabs="start" color="accent">
+  <mat-tab label="{{ 'services.plural' | translate}}" color="accent">
+    <div id="header">
+      <mat-chip-list aria-label="Language selection" id="fast-filters">
+        <mat-chip color="accent" selected (click)="filterStatus('ALL')">{{ 'table.all' | translate}}</mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('pl')">{{ 'table.pl' | translate}}</mat-chip>
+        <mat-chip color="accent" selected (click)="filterStatus('en')">{{ 'table.en' | translate}}</mat-chip>
+      </mat-chip-list>
+      <button id="add-service" mat-mini-fab color="primary" aria-label="Add service button" (click)="addService()">
+        <mat-icon id="icon">add</mat-icon>
+      </button>
+    </div>
+    <div id="services-table">
+      <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <mat-form-field>
+        <mat-label>{{ 'table.filter' | translate}}</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'table.filter-example' | translate}}" #input>
+      </mat-form-field>
+      <div id="table-wrapper" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.name' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="basePrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'services.basePrice' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.basePrice}} PLN</td>
+          </ng-container>
+
+          <ng-container matColumnDef="indicators">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'services.indicators' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list aria-label="Indicators">
+                <mat-chip *ngFor="let indicator of element.indicatorEtoList" color="accent" selected>{{indicator.name}}
+                </mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="locale">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.language' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{ 'table.' + element.locale | translate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>{{ 'table.actions' | translate}}</th>
+            <td mat-cell *matCellDef="let element" class="actions-container">
+              <div>
+                <div>
+                  <button mat-icon-button color="primary" (click)="modifyService(element)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteService(element)">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+      </div>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="{{ 'indicators.plural' | translate}}" color="accent">
+    <cf-indicators-overview></cf-indicators-overview>
+  </mat-tab>
+  <mat-icon>add_box</mat-icon>
+</mat-tab-group>

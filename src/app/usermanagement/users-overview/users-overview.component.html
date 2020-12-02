@@ -1,0 +1,83 @@
+<mat-tab-group mat-align-tabs="start" color="accent">
+    <mat-tab label="{{ 'users.plural' | translate}}" color="accent">
+        <div id="header">
+            <mat-chip-list aria-label="Language selection" id="fast-filters">
+                <mat-chip color="accent" selected (click)="filterStatus('ALL')">{{ 'table.all' | translate}}</mat-chip>
+                <mat-chip color="accent" selected (click)="filterStatus('manager')">{{ 'users.manager' | translate}}</mat-chip>
+                <mat-chip color="accent" selected (click)="filterStatus('user')">{{ 'users.user' | translate}}</mat-chip>
+              </mat-chip-list>
+              <button id="add-user" mat-mini-fab color="primary" aria-label="Add user button" (click)="addUser()">
+                <mat-icon id="icon">add</mat-icon>
+            </button>
+        </div>
+        <div id="users-table">
+          <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <mat-form-field>
+            <mat-label>{{ 'table.filter' | translate}}</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'table.filter-example' | translate}}" #input>
+          </mat-form-field>
+          <div id="table-wrapper" class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+          
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.name' | translate}} </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="surname">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.surname' | translate}} </th>
+              <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.username' | translate}} </th>
+              <td mat-cell *matCellDef="let element"> {{element.accountEto.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.email' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.accountEto.email}} </td>
+              </ng-container>
+              
+            <ng-container matColumnDef="isActivated">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.isActivated' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{ 'users.' + !element.accountEto.isActivated | translate}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'users.role' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{ 'users.' + element.roleEto.name.toLowerCase() | translate}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>{{ 'table.actions' | translate}}</th>
+                <td mat-cell *matCellDef="let element" class="actions-container">
+                    <div>
+                        <div>
+                            <button mat-icon-button color="primary" [disabled]="!element.accountEto.isActivated" (click)="modifyUser(element)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="deleteUser(element)">
+                                <mat-icon>clear</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </ng-container> 
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+          </div>
+        </div>
+
+    </mat-tab>
+    <mat-tab label="{{ 'roles.plural' | translate}}" color="accent">
+        <cf-roles-overview></cf-roles-overview>
+    </mat-tab>
+    <mat-icon>add_box</mat-icon>
+  </mat-tab-group>

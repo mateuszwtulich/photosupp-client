@@ -1,0 +1,34 @@
+<div id="login-container">
+    <mat-card id="login">
+        <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <form (ngSubmit)="authenticate()">
+            <mat-card-content>
+                <mat-card-title id="login-title"> {{ 'login.title' | translate }} </mat-card-title>
+                <div id="mat-form-container">
+                    <mat-form-field appearance="outline" color="accent">
+                        <mat-label> {{ 'login.username' | translate }} </mat-label>
+                        <input matInput placeholder="" [formControl]="usernameFormControl" type="text" name="username"
+                            required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" color="accent">
+                        <mat-label> {{ 'registration.password-1st' | translate }} </mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl"
+                            type="password" name="password" required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button mat-raised-button type="submit" color="accent" id="login-button"
+                        [disabled]="usernameFormControl.invalid || passwordFormControl.invalid">
+                        {{ 'login.button' | translate }} </button>
+                </div>
+                <mat-card-subtitle id="password-message">
+                    <a id="text" routerLink="forgotten-password"> {{ 'login.password-message' | translate }} </a>
+                </mat-card-subtitle>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>

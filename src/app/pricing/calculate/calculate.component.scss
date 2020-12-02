@@ -1,0 +1,84 @@
+#stepper{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .spinner-wrapper {
+        position: absolute !important;
+        z-index: 3;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #pricing-end{
+        display: flex;
+        flex-direction: row;
+
+        #pricing-title{
+            margin-right: 3%;
+        }
+
+        ::ng-deep .mat-chip-list{
+            margin-right: 0 !important;
+            margin-left: auto !important;
+        }
+    }
+
+    .back{
+        margin-right: 1rem;
+    }
+
+    ::ng-deep .mat-list-item{
+        margin-bottom: 1% !important;
+        padding-bottom: 4% !important;
+        padding-top: 1% !important;
+    
+        ::ng-deep .mat-list-text{
+    
+        }
+    }
+    
+    .top{
+        padding-bottom: 1.5% !important;
+        padding-top: 2% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+
+        .title{
+            display: flex;
+            flex-direction: row;
+            margin-left: 1%;
+            margin-right: auto;
+
+            #name{
+                margin-right: 3%;
+            }
+        }
+    
+        #indicator-slider{
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    
+        .price{
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
+    }
+
+    .description{
+        color: #0e2636 !important;
+        margin-left: 1%;
+    }
+}
+
+.button {
+    margin-top: 3%;
+}
+

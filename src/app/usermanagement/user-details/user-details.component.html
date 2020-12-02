@@ -1,0 +1,135 @@
+<mat-tab-group mat-align-tabs="start" color="accent">
+    <mat-tab label="{{ 'users.personal-data' | translate}}" color="accent">
+        <div id="header">
+            <button id="modify-account" mat-mini-fab color="primary" aria-label="Add user button"
+                (click)="modifyAccount()">
+                <mat-icon id="icon">edit</mat-icon>
+            </button>
+        </div>
+
+        <div class="update-container">
+            <mat-card class="update-card margin-top-0" *ngIf="userControl.valid">
+                <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+
+                <mat-card-title class="card-title"> {{ 'users.personal-data' | translate}} </mat-card-title>
+                <mat-divider></mat-divider>
+                <mat-card-content id="content">
+                    <mat-list>
+                        <mat-list-item>
+                            <div class="title">
+                                <mat-chip-list [formControl]="userControl">
+                                    <mat-chip>{{ 'users.name' | translate}}:</mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="field"> {{user.name}} </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div class="title">
+                                <mat-chip-list [formControl]="userControl">
+                                    <mat-chip>{{ 'users.surname' | translate}}:</mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="field"> {{user.surname}} </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div class="title">
+                                <mat-chip-list [formControl]="userControl">
+                                    <mat-chip>{{ 'users.username' | translate}}:
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="field"> {{user.accountEto.username}} </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div class="title">
+                                <mat-chip-list [formControl]="userControl">
+                                    <mat-chip>{{ 'users.email' | translate}}:
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="field"> {{user.accountEto.email}} </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="{{ 'users.password-update' | translate}}" color="accent">
+        <div class="update-container">
+            <mat-card class="update-card">
+                <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+                <mat-card-title class="card-title"> {{ 'users.password-update' | translate }} </mat-card-title>
+                <mat-card-content>
+                    <div class="mat-form-container">
+                        <form [formGroup]="passwordForm" id="password-form">
+                            <mat-form-field appearance="outline" color="accent">
+                                <mat-label> {{ 'registration.password-1st' | translate }} </mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="passwordForm.hasError('required', 'password')">
+                                    {{ 'registration.enter-password' | translate }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" color="accent">
+                                <mat-label> {{ 'registration.password-2nd' | translate }} </mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword"
+                                    [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="passwordForm.hasError('notSame')">
+                                    {{ 'registration.password-not-match' | translate }}
+                                </mat-error>
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </form>
+                        <button mat-raised-button color="accent" class="update-button" [disabled]="passwordForm.invalid"
+                            (click)="changePassword()">
+                            {{ 'users.password-button' | translate }} </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="{{ 'users.email-update' | translate}}" color="accent">
+        <div class="update-container">
+            <mat-card class="update-card">
+                <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+                    <mat-spinner color="accent"></mat-spinner>
+                </div>
+                <mat-card-title class="card-title"> {{ 'users.email-update' | translate }} </mat-card-title>
+                <mat-card-content>
+                    <div class="mat-form-container">
+                        <form [formGroup]="emailForm">
+                            <mat-form-field appearance="outline" color="accent">
+                                <mat-label> {{ 'users.email-1st' | translate }} </mat-label>
+                                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                                <mat-error *ngIf="emailForm.controls['email']">{{getErrorMessage1st()}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" color="accent">
+                                <mat-label> {{ 'users.email-2nd' | translate }} </mat-label>
+                                <input matInput placeholder="pat@example.com" formControlName="confirmEmail" required>
+                                <mat-error *ngIf="emailForm.controls['confirmEmail'].invalid">{{getErrorMessage2nd()}}</mat-error>
+                                <mat-error *ngIf="emailForm.hasError('notSame')">
+                                    {{ 'registration.email-not-match' | translate }}
+                                </mat-error>
+                            </mat-form-field>
+                            <button mat-raised-button color="accent" class="update-button" [disabled]="emailForm.invalid" (click)="changeEmail()">
+                                {{ 'users.email-button' | translate }} </button>
+                        </form>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-tab>
+</mat-tab-group>

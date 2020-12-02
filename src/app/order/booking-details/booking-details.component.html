@@ -1,0 +1,168 @@
+<mat-tab-group mat-align-tabs="start" color="accent" *ngIf="bookingControl.valid">
+  <mat-tab label="{{ 'bookings.details' | translate}}" color="accent">
+    <div id="header">
+      <div id="button-wrapper">
+      <button id="modify-booking" mat-mini-fab color="primary"  aria-label="Modify button" (click)="modifyBooking()">
+        <mat-icon id="icon">edit</mat-icon>
+      </button>
+      <button id="delete-booking" mat-mini-fab color="warn" aria-label="Delete button" (click)="deleteBooking()">
+        <mat-icon id="icon">clear</mat-icon>
+      </button>
+    </div>
+    </div>
+
+    <div class="update-container">
+      <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <mat-card class="update-card margin-top-0">
+        <mat-card-title class="card-title"> {{ 'bookings.details' | translate}} </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content id="content">
+          <mat-list>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.name' | translate}}:</mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.name}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.description' | translate}}:</mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.description}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.service' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.serviceEto.name}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.address' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.addressEto.street}} {{booking.addressEto.buildingNumber}},
+                {{booking.addressEto.postalCode}} {{booking.addressEto.city}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.user' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.userEto.name}} {{booking.userEto.surname}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.isConfirmed' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field" *ngIf="booking.confirmed;else defaultValue">
+                {{'bookings.confirmed' | translate}}
+              </div>
+              <ng-template #defaultValue>{{'bookings.unconfirmed' | translate}}</ng-template>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.predictedPrice' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.predictedPrice}} PLN </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.start' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.start}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="title">
+                <mat-chip-list [formControl]="bookingControl">
+                  <mat-chip>{{ 'bookings.end' | translate}}:
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="field"> {{booking.end}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+          <div class="mat-form-container" *ngIf="!bookingControl.value.confirmed">
+            <div id="start-booking">
+              <button mat-raised-button color="accent" *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_BOOKINGS']"
+                class="start-button" (click)="confirmBooking()">
+                {{ 'bookings.start-booking' | translate }} </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="{{ 'bookings.indicators' | translate}}" color="accent">
+    <div id="table-header">
+      <button id="add-indicator" mat-mini-fab color="primary" [disabled]="booking.confirmed" aria-label="Add indicator button" (click)="modifyPriceIndicators()">
+        <mat-icon id="icon">edit</mat-icon>
+      </button>
+    </div>
+    <div id="indicators-table">
+      <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <div id="table-wrapper" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.name' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.indicatorEto.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'indicators.description' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.indicatorEto.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'bookings.indicator-amount' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'bookings.indicator-price' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} PLN</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

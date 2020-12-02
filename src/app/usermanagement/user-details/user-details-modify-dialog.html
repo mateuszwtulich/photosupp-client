@@ -1,0 +1,28 @@
+<div id="dialog">
+    <div id="modal-top">
+        <h2 class="mat-h2">{{ 'users.modify' | translate }}</h2>
+        <button id="close" mat-icon-button (click)="closeDialog()">
+            <mat-icon class="material-icons">close</mat-icon>
+        </button>
+    </div>
+
+    <div id="content">
+        <form (ngSubmit)="modifyUser()">
+            <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+                <mat-spinner></mat-spinner>
+            </div>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.name' | translate }}</mat-label>
+                <input matInput [formControl]="nameControl" name="name" required>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'users.surname' | translate }}</mat-label>
+                <input matInput [formControl]="surnameControl" name="surname" required>
+            </mat-form-field>
+
+            <div class=" button-wrapper">
+                <button id="modify" mat-flat-button type="submit" color="accent">{{ 'dialog.modify' | translate}}</button>
+            </div>
+        </form>
+    </div>
+</div>

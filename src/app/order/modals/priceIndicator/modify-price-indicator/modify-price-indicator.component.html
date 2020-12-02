@@ -1,0 +1,47 @@
+<div id="dialog">
+    <div id="modal-top">
+        <h2 class="mat-h2">{{ 'bookings.indicators' | translate }}</h2>
+        <button id="close" mat-icon-button (click)="closeDialog()">
+            <mat-icon class="material-icons">close</mat-icon>
+        </button>
+    </div>
+  
+    <div id="content" *ngIf="priceIndicators.length > 0">
+        <form (ngSubmit)="modifyPriceIndicators()">
+            <mat-list>
+              <mat-list-item
+                *ngFor="let priceIndicator of priceIndicators; let i = index"
+                [attr.data-index]="i" class="mat-elevation-z4">
+      
+                <div matLine class="top">
+                  <div class="title">
+                    <p id="name">{{priceIndicator.indicatorEto.name}}: </p>
+                    <mat-chip-list>
+                      <mat-chip color="primary" selected> {{priceIndicator.amount}}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+      
+                  <div id="indicator-slider">
+                    <mat-slider thumbLabel [min]="priceIndicator.indicatorEto.baseAmount" [max]="priceIndicator.indicatorEto.baseAmount*25" [tickInterval]="1"
+                      [(value)]="priceIndicator.amount" name="indicatorEto.id" [vertical]="vertical">
+                    </mat-slider>
+                  </div>
+      
+                  <div class="price">
+                    <mat-chip-list>
+                      <mat-chip color="primary" selected>+{{calculateTheIndicatorCost(i, priceIndicator.indicatorEto)}} PLN</mat-chip>
+                    </mat-chip-list>
+      
+                  </div>
+                </div>
+      
+                <p matLine color="primary" class="description">{{priceIndicator.indicatorEto.description}}</p>
+      
+              </mat-list-item>
+            </mat-list>
+            <div class=" button-wrapper">
+                <button id="add" mat-flat-button type="submit" color="accent">{{ 'dialog.modify' | translate}}</button>
+            </div>
+          </form>
+    </div>
+  </div>

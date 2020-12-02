@@ -1,0 +1,246 @@
+{
+  "pl": "polski",
+  "en": "angielski",
+  "welcomeMessage": "Witamy w systemie",
+  "system": "Photosupp",
+  "subtitleMessage": "Udogadniamy współpracę z inviu.pl",
+  "login": {
+    "username": "Nazwa użytkownika",
+    "title": "Logowanie",
+    "button": "Zaloguj się",
+    "password-message": "Jeśli zapomniałeś hasła, możesz je zmienić znając adres e-mail.",
+    "error": "Podane hasło lub nazwa są błędne."
+  },
+  "pricing": {
+    "title": "Oblicz cenę swojej usługi już teraz!",
+    "1st-step": "Wybierz usługę",
+    "2nd-step": "Uwzględnij czynniki",
+    "3rd-step": "Sprawdź koszt",
+    "calculation": "Wstępna kalkulacja: ",
+    "warning": "PAMIĘTAJ! To jest szacunkowy kosz usługi. Aby ustalić ostateczną cenę proszę skontaktuj się z właścicielem Inviu",
+    "next": "Następny",
+    "back": "Poprzedni",
+    "reset": "Zacznij od nowa"
+  },
+  "company": {
+    "owner": {
+      "quot": {
+        "1st-part": "Jakość świadczonych usług jest naszym najwyższym priorytetem. System photosupp podkreśla naszą obecność w świecie najnowszych rozwiązań i technologii.",
+        "2nd-part": "Już teraz pomożemy Ci wybrać najlepszą usługę dla Ciebie bez konieczności rejestracji!"
+      },
+      "name": "Imię Nazwisko",
+      "title": "Właściciel firmy fotograficznej"
+    }
+  },
+  "system-statement": {
+    "title": "System Photosupp zapewni Ci opiękę w trakcie korzystania z usług firmy fotograficznej:",
+    "advantage": {
+      "1st": "Pomoże Ci wybrać odpowiednią usługę i pozwoli ustalić termin realizacji.",
+      "2nd": "Zapewni Ci dostęp do postępów realizacji i weryfikacji zlecenia.",
+      "3rd": "Udostępni Ci możliwość pobrania materiałów po ich zaakceptowaniu."
+    }
+  },
+  "registration": {
+    "title": "Rejestracja",
+    "hint": "Maksymalnie 10 znaków",
+    "subtitle": "Jeśli jeszcze tego nie zroobiłeś, zarejestuj się, aby skorzystać ze wszystkich możliwości które zapewnia Photosupp.",
+    "name": "Twoje imię",
+    "surname": "Twoje nazwisko",
+    "email": "Adres e-mail",
+    "password-1st": "Hasło",
+    "password-2nd": "Powtórz hasło",
+    "button": "Zarejestruj się",
+    "login-message": "Jeśli posiadasz już konto, zaloguj się.",
+    "email-null": "Musisz podać adres e-mail",
+    "email-invalid": "To nie jest poprawny adres e-mail",
+    "enter-password": "Musisz podać hasło",
+    "password-not-match": "Hasła nie są takie same",
+    "email-not-match": "Adresy e-mail nie są takie same",
+    "check-mailbox": "Sprawdź skrzynkę pocztową, aby zweryfikować konto."
+  },
+  "sidenav": {
+    "login": "Zaloguj się",
+    "account_box": "Zarejestruj się",
+    "calculate": "Oblicz cenę",
+    "home": "Panel główny",
+    "book_online": "Zamów usługę",
+    "list_alt": "Zamówienia",
+    "calendar_today": "Terminarz",
+    "account_circle": "Ustawienia",
+    "power_settings_new": "Wyloguj się",
+    "exit_to_app": "Wyloguj się",
+    "design_services": "Usługi",
+    "supervised_user_circle": "Użytkownicy"
+  },
+  "password": {
+    "title": "Zmień hasło",
+    "button": "Zmień hasło"
+  },
+  "client": {
+    "booking": "Dzięki tej funkcjonalności oszacujesz koszt interesującej Cię usługi oraz umówisz się na realizację w dogodnym dla Ciebie terminie.",
+    "orders": "Ta funkcjonalność zapewnia Ci podgląd wszystkich Twoich zleceń: ukończonych, planowanych lub aktualnie zrealizowanych. Wybierając konkretne zlecenie masz możliwość podglądu stanu zlecenia, komentowania postępów, zweryfikowania produktów czy pobrania pełnej ich wersji.",
+    "scheduler": "Funkcjonalność podglądu kalendarza pozwoli Ci edytować termin zaplanowanych zleceń uwzględniając wszystkie aktualnie niedostępne terminy.",
+    "settings": "Tutaj możesz zmienić dane osobowe, address e-mail czy zmienić hasło dostępu do systemu."
+  },
+  "manager": {
+    "orders": "Ta funkcjonalność zapewnia Ci podgląd wszystkich zleceń: ukończonych, planowanych lub aktualnie zrealizowanych. Wybierając konkretne zlecenie masz możliwość edycji stanu zlecenia, komentowania postępów, dodania wstępnej wersji produktu czy udostępnienia pełnej ich wersji.",
+    "scheduler": "Funkcjonalność podglądu kalendarza pozwoli Ci edytować termin zaplanowanych zleceń uwzględniając wszystkie aktualnie niedostępne terminy.",
+    "settings": "Tutaj możesz zmienić dane osobowe, address e-mail czy zmienić hasło dostępu do systemu.",
+    "users": "Funkcjonalność pozwoli Ci przeglądać dane aktualnie zarejestrowanych użytkowników, zmieniać ich rolę oraz edytować je.",
+    "services": "Tutaj możesz zarządzać swoimi usługami oraz tworzyć czynniki wpływające na ich cenę."
+  },
+  "table": {
+    "actions": "Czynności",
+    "filter": "Filtruj...",
+    "pagination": "Elementów na stronie",
+    "filter-null": "Brak danych odpowiadących filtrowi: ",
+    "filter-example": "Przykładowa wartość",
+    "pl": "polski",
+    "en": "angielski",
+    "all": "Wszystkie",
+    "language": "Język",
+    "name": "Nazwa",
+    "name-second": "Nazwa w języku obcym",
+    "locale-add": "Język obcy",
+    "delete": "Czy jesteś pewny?",
+    "cancel": "Zrezygnuj",
+    "delete-confirm": "Potwierdź"
+  },
+  "orders": {
+    "plural": "Zamówienia",
+    "orderNumber": "Numer zamówienia",
+    "coordinator": "Koordynator",
+    "user": "Użytkownik",
+    "status": "Status",
+    "booking": "Rezerwacja",
+    "booking-null": "Brak",
+    "price": "Cena",
+    "createdAt": "Data utworzenia",
+    "all": "Wszystkie",
+    "NEW": "Nowy",
+    "IN_PROGRESS": "W realizacji",
+    "TO_VERIFY": "Do weryfikacji",
+    "FINISHED": "Ukończony",
+    "details": "Szczegóły zamówienia",
+    "comments": "Sekcja komentarzy",
+    "content": "Aktualna zawartość zamówienia",
+    "gallery": "Galeria z aktualnymi zdjęciami",
+    "add-comment": "Komentarze",
+    "comment-button": "Dodaj komentarz",
+    "comment-write": "Napisz komentarz",
+    "verify": "Wyślij do weryfikacji",
+    "inprogress": "Rozpocznij zlecenie",
+    "finish": "Zakończ zlecenie",
+    "add": "Utwórz nowe zamówienie",
+    "modify": "Zaktualizuj zamówienie"
+  },
+  "bookings": {
+    "plural": "Rezerwacje",
+    "name": "Nazwa",
+    "service": "Usługa",
+    "user": "Użytkownik",
+    "isConfirmed": "Czy potwierdzona",
+    "start": "Rozpoczęcie",
+    "end": "Zakończenie",
+    "address": "Adres",
+    "predictedPrice": "Przewidywana cena",
+    "true": "Tak",
+    "fales": "Nie",
+    "all": "Wszystkie",
+    "confirmed": "Potwierdzone",
+    "unconfirmed": "Niepotwierdzone",
+    "1st-step": "Wybierz wolny termin",
+    "last-step": "Utwórz rezerwację",
+    "details":"Szczegóły rezerwacji",
+    "description":"Opis",
+    "indicators":"Czynniki podwyższające cenę",
+    "indicator-amount": "Ilość",
+    "indicator-price": "Cena dodatkowa",
+    "start-booking": "Przyjmij zlecenie",
+    "information": "Podaj informacje",
+    "save": "Utwórz rezerwacje",
+    "mine": "Moje",
+    "add": "Dodaj rezerwację",
+    "modify": "Zaktualizuj rezerwację"
+  },
+  "services": {
+      "plural": "Usługi",
+      "basePrice": "Cena podstawowa",
+      "indicators": "Czynniki podwyższające cenę",
+      "modify": "Zaktualizuj usługę",
+      "add":"Dodaj usługę"
+  },
+  "indicators": {
+      "plural": "Czynniki",
+      "description": "Opis",
+      "baseAmount": "Ilość wolna od dopłaty",
+      "doublePrice": "Dodatkowa cena za podwojenie ilości",
+      "add": "Dodaj czynnik",
+      "description-second": "Opis w języku obcym",
+      "modify": "Zaktualizuj czynnik"
+  },
+  "users": {
+    "plural": "Użytkownicy",
+    "name": "Imię",
+    "surname": "Nazwisko",
+    "username": "Nazwa użytkownika",
+    "email": "Adres e-mail",
+    "isActivated": "Czy aktywowany",
+    "role": "Rola",
+    "manager": "Menedżer",
+    "user": "Użytkownik",
+    "admin": "Administrator",
+    "false": "Tak",
+    "true": "Nie",
+    "personal-data": "Dane osobowe",
+    "password-update": "Zmiana hasła",
+    "email-update": "Zmiana adresu e-mail",
+    "new-password-1st": "Nowe hasło",
+    "new-password-2nd": "Powtórz nowe hasło",
+    "email-1st": "Nowy adress e-mail",
+    "email-2nd": "Powtórz nowy adres e-mail",
+    "password-button": "Zmień hasło",
+    "email-button": "Zmień adres e-mail",
+    "modify": "Zmień dane osobowe",
+    "modified": "Dane zostały zmienione.",
+    "check-mailbox": "Sprawdź skrzynkę pocztową. Dane konta zostały zmienione.",
+    "add":"Dodaj użytkownika"
+  },
+  "roles": {
+    "plural": "Role",
+    "description": "Opis",
+    "permissions": "Uprawnienia",
+    "add": "Dodaj rolę",
+    "modify":"Zaktualizuj rolę"
+  },
+  "permissions": {
+    "A_CRUD_SUPER": "Administrator",
+    "A_CRUD_USERS": "Zarządzanie użytkownikami",
+    "A_CRUD_ROLES":"Zarządzanie rolami",
+    "A_CRUD_SERVICES": "Zarządzanie usługami",
+    "A_CRUD_BOOKINGS": "Zarządzanie rezerwacjami",
+    "A_CRUD_INDICATORS": "Zarządzanie czynnikami",
+    "A_CRUD_ORDERS": "Zarządzanie zamówieniami",
+    "AUTH_USER": "Klient"
+  },
+  "mediaContent": {
+    "type": "Rodzaj",
+    "name": "Nazwa",
+    "IMAGE": "Zdjęcie",
+    "VIDEO": "Film"
+  },
+  "address": {
+    "city": "Miasto",
+    "street": "Ulica",
+    "buildingNumber": "Numer budynku",
+    "apartmentNumber": "Numer mieszkania",
+    "postalCode": "Kod pocztowy"
+  },
+  "dialog": {
+    "modify": "Zaktualizuj",
+    "add": "Utwórz"
+  },
+  "server": {
+    "error": "Błąd"
+  }
+}

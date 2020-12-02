@@ -1,0 +1,43 @@
+<div id="dialog">
+    <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div id="modal-top">
+        <h2 class="mat-h2">{{ 'orders.add' | translate }}</h2>
+        <button id="close" mat-icon-button (click)="closeDialog()">
+            <mat-icon class="material-icons">close</mat-icon>
+        </button>
+    </div>
+
+    <div id="content">
+        <form (ngSubmit)="addOrder()">
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'orders.coordinator' | translate }}</mat-label>
+                <mat-select [formControl]="coordinatorControl" required>
+                    <mat-option *ngFor="let coordinator of coordinators" [value]="coordinator">{{coordinator.name}}
+                        {{coordinator.surname}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'orders.user' | translate }}</mat-label>
+                <mat-select [formControl]="userControl" required>
+                    <mat-option *ngFor="let user of users" [value]="user">{{user.name}} {{user.surname}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'orders.booking' | translate }}</mat-label>
+                <mat-select [formControl]="bookingControl">
+                    <mat-option *ngFor="let booking of bookings" [value]="booking">{{booking.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline" color="accent">
+                <mat-label>{{ 'orders.price' | translate }}</mat-label>
+                <input matInput [formControl]="priceControl" name="price" required>
+            </mat-form-field>
+
+            <div class=" button-wrapper">
+                <button id="add" mat-flat-button type="submit" color="accent">{{ 'dialog.add' | translate}}</button>
+            </div>
+        </form>
+    </div>
+</div>

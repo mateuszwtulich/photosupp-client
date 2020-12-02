@@ -1,0 +1,119 @@
+
+#header{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    display: flex;
+    flex-direction: row;
+
+    #add-order{
+        margin-right: 0%;
+        margin-left: auto;
+
+        #icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+    }
+}
+
+
+#orders-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+
+    .spinner-wrapper {
+      position: absolute !important;
+      z-index: 3;
+      width: 100% !important;
+      height: 80% !important;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #table-wrapper {
+      width: 85%;
+
+      ::ng-deep .mat-chip {
+        padding-top: 1.3rem;
+        padding-bottom: 1.3rem;
+      }
+
+      table{
+        width: 100%;
+
+        td {
+          padding-right: 0.5rem;
+          padding-right: 0.5rem;
+          width: calc(100% / 7.4) !important;
+        }
+      }
+
+      mat-paginator {
+        width: 100%;
+      }
+    }
+      .mat-form-field {
+        font-size: 14px;
+        width: 85%;
+      }
+}
+
+#dialog{
+  display: block;
+
+  .button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5px;
+    
+      button {
+        margin-left: 8px;
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+      }
+    }
+    
+    #modal-top {
+      display: flex;
+      .mat-h2 {
+        justify-content: left;
+      }
+      #close {
+        justify-content: right;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+    
+    #content {
+      .full-width-input {
+        margin-top: 0;
+        display: block;
+        widows: 70% !important;
+        &:nth-child(1) {
+          margin-top: 0;
+        }
+      }
+    
+      .spinner-wrapper {
+        position: absolute;
+        width: inherit;
+        height: inherit !important;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+}
+
+

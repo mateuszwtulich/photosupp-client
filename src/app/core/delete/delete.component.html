@@ -1,0 +1,15 @@
+<div id="dialog">
+    <div id="modal-top">
+        <h2 class="mat-h2">{{ 'table.delete' | translate }}</h2>
+        <button id="close" mat-icon-button (click)="closeDialog()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <form>
+        <div class="button-wrapper">
+            <button mat-stroked-button type="button" color="accent"
+                (click)="closeDialog()">{{ 'table.cancel' | translate }}</button>
+            <button mat-flat-button color="warn" (click)="delete()">{{ 'table.delete-confirm' | translate }}</button>
+        </div>
+    </form>
+</div>

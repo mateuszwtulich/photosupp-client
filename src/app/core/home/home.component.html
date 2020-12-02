@@ -1,0 +1,154 @@
+<div id="home-container">
+    <div id="home-title">
+        <h1 class="mat-h1">{{ 'welcomeMessage' | translate }}</h1>
+        <h1 class="mat-h1">{{ 'system' | translate }}</h1>
+        <h3 class="mat-h3">{{ 'subtitleMessage' | translate }}</h3>
+    </div>
+    <div id="home-content">
+        <mat-grid-list cols="8" rowHeight="11.5rem">
+            <mat-grid-tile [colspan]="5" [rowspan]="6">
+                <mat-card id="information">
+                    <img mat-card-image src='../../../assets/img6.jpg' alt="photograph">
+                    <mat-card-content>
+                        <div id="company">
+                            <mat-card-subtitle id="company-owner-quot">
+                                {{ 'company.owner.quot.1st-part' | translate }}
+                                <br>{{ 'company.owner.quot.2nd-part' | translate }}
+                            </mat-card-subtitle>
+                            <div id="company-owner">
+                                <div class="icon">
+                                    <mat-icon>account_circle</mat-icon>
+                                </div>
+                                <div class="text">
+                                    <mat-card-title id="owner-name"> {{ 'company.owner.name' | translate }}
+                                    </mat-card-title>
+                                    <mat-card-subtitle id="owner-title">
+                                        {{ 'company.owner.title' | translate }}
+                                    </mat-card-subtitle>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div id="system-statement">
+                            <mat-card-title id="advantages-title"> {{ 'system-statement.title' | translate }}
+                            </mat-card-title>
+                            <div class="advantage">
+                                <div class="icon">
+                                    <mat-icon>stars</mat-icon>
+                                </div>
+                                <div class="text">
+                                    <mat-card-subtitle>
+                                        {{ 'system-statement.advantage.1st' | translate }}
+                                    </mat-card-subtitle>
+                                </div>
+                            </div>
+                            <div class="advantage">
+                                <div class="icon">
+                                    <mat-icon>stars</mat-icon>
+                                </div>
+                                <div class="text">
+                                    <mat-card-subtitle>
+                                        {{ 'system-statement.advantage.2nd' | translate }}
+                                    </mat-card-subtitle>
+                                </div>
+                            </div>
+                            <div class="advantage">
+                                <div class="icon">
+                                    <mat-icon>stars</mat-icon>
+                                </div>
+                                <div class="text">
+                                    <mat-card-subtitle>
+                                        {{ 'system-statement.advantage.3rd' | translate }}
+                                    </mat-card-subtitle>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="3" [rowspan]="6">
+
+                <mat-card id="registration">
+                    <div *ngIf="isSpinnerDisplayed" class="spinner-wrapper">
+                        <mat-spinner color="accent"></mat-spinner>
+                    </div>
+                    <form (ngSubmit)="register()">
+
+                        <mat-card-content>
+                            <mat-card-title id="registration-title"> {{ 'registration.title' | translate }}
+                            </mat-card-title>
+                            <mat-card-subtitle id="registration-subtitle"> {{ 'registration.subtitle' | translate }}
+                            </mat-card-subtitle>
+                            <div id="mat-form-container">
+                                <mat-form-field hintLabel="" appearance="outline" color="accent"
+                                    #formField1="matFormField">
+                                    <mat-label> {{ 'registration.name' | translate }} </mat-label>
+                                    <input matInput #input maxlength="10" placeholder=""
+                                        [formControl]="nameFormControl">
+                                    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                </mat-form-field>
+                                <mat-form-field hintLabel="" appearance="outline" color="accent"
+                                    #formField2="matFormField">
+                                    <mat-label> {{ 'registration.surname' | translate }} </mat-label>
+                                    <input matInput #input maxlength="10" placeholder=""
+                                        [formControl]="surnameFormControl">
+                                    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" color="accent">
+                                    <mat-label> {{ 'registration.email' | translate }} </mat-label>
+                                    <input matInput placeholder="pat@example.com" [formControl]="emailFormControl"
+                                        required>
+                                    <mat-error *ngIf="emailFormControl.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+
+                                <form [formGroup]="passwordForm" id="password-form">
+                                    <mat-form-field appearance="outline" color="accent">
+                                        <mat-label> {{ 'registration.password-1st' | translate }} </mat-label>
+                                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                        <mat-error *ngIf="passwordForm.hasError('required', 'password')">
+                                            {{ 'registration.enter-password' | translate }}
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" color="accent">
+                                        <mat-label> {{ 'registration.password-2nd' | translate }} </mat-label>
+                                        <input matInput [type]="hide ? 'password' : 'text'"
+                                            formControlName="confirmPassword" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="passwordForm.hasError('notSame')">
+                                            {{ 'registration.password-not-match' | translate }}
+                                        </mat-error>
+                                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                </form>
+                                <button mat-raised-button type="submit" color="accent" id="registration-button"
+                                    [disabled]="nameFormControl.invalid || surnameFormControl.invalid || passwordForm.invalid || emailFormControl.invalid">
+                                    {{ 'registration.button' | translate }} </button>
+                            </div>
+                            <mat-card-subtitle id="login-message">
+                                <a id="text" routerLink="/login"> {{ 'registration.login-message' | translate }} </a>
+                            </mat-card-subtitle>
+                        </mat-card-content>
+                    </form>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div id="pricing-container">
+        <mat-divider></mat-divider>
+
+        <div id="pricing-title">
+            <h1 class="mat-h1">{{ 'pricing.title' | translate }}</h1>
+        </div>
+        <mat-divider></mat-divider>
+        <div id="calculate-stepper">
+            <cf-calculate>
+            </cf-calculate>
+        </div>
+    </div>
+</div>
