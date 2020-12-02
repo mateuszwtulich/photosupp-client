@@ -1,5 +1,5 @@
 export class BackendApiServicePath {
     public static BACKEND_API() {
-        return 'http://localhost:8090/';
+        return 'https://photosupp.herokuapp.com/';
     }
 }
