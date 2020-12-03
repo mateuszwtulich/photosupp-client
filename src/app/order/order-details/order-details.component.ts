@@ -234,7 +234,6 @@ export class OrderDetailsComponent implements OnInit {
   onChange(file) {
     this.subscription.add(this.serwerService.addImage(file)
       .subscribe((url: string) => {
-        console.log(url);
         let type = file.type.substring(0, file.type.indexOf('/'));
 
         let mediaContentTo: MediaContentTo = {

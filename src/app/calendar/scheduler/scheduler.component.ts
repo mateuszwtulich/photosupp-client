@@ -152,7 +152,6 @@ export class SchedulerComponent implements OnInit {
   }
 
   navigateToDetailsByRole(url: string, arg) {
-    console.log(arg.event._def)
     this.router.navigateByUrl(url + "/orders/booking/details/" + arg.event.id);
   }
 

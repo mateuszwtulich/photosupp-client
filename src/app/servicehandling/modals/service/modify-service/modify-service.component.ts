@@ -62,7 +62,6 @@ export class ModifyServiceComponent implements OnInit {
     if (this.nameControl.valid && this.descriptionControl.valid && this.basePriceControl.valid) {
       let indicatorsIds = [];
       
-      console.log(this.indicatorsControl.value.length)
       if(this.indicatorsControl.value.length > 0){
         indicatorsIds = this.indicatorsControl.value.map(indicator => indicator.id);
       } 
