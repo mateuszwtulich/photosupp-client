@@ -110,6 +110,9 @@ export class OrderDetailsComponent implements OnInit {
     this.subscription.add(this.orderSevice.spinnerData.subscribe((isSpinnerDisplayed: boolean) => {
       this.isSpinnerDisplayed = isSpinnerDisplayed;
     }));
+    this.subscription.add(this.serwerService.spinnerData.subscribe((isSpinnerDisplayed: boolean) => {
+      this.isSpinnerDisplayed = isSpinnerDisplayed;
+    }));
   }
 
   ngOnDestroy() {

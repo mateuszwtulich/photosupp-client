@@ -13,7 +13,7 @@
       <button id="delete" *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS']" mat-mini-fab color="warn"
         aria-label="Delete button"
         [disabled]="order.status.includes('IN_PROGRESS') || order.status.includes('TO_VERIFY')" (click)="deleteOrder()">
-        <mat-icon id="icon">delete_forever</mat-icon>
+        <mat-icon id="icon">delete</mat-icon>
       </button>
     </div>
 
@@ -160,7 +160,7 @@
                       <mat-icon>download</mat-icon>
                     </button>
                     <button mat-icon-button color="warn" (click)="deleteMediaContent(element)">
-                      <mat-icon>clear</mat-icon>
+                      <mat-icon>delete</mat-icon>
                     </button>
                   </div>
                 </div>
@@ -194,7 +194,7 @@
               <div class="field-comment"> {{comment.content}} </div>
               <button *ngIf="comment.userEto.id == userId" id="delete-comment" mat-mini-fab color="warn"
                 aria-label="Delete comment" (click)=deleteComment(comment)>
-                <mat-icon id="icon">clear</mat-icon>
+                <mat-icon id="icon">delete</mat-icon>
               </button>
             </mat-list-item>
             <mat-divider></mat-divider>
