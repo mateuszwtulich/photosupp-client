@@ -132,20 +132,6 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>{{ 'bookings.last-step' | translate }}</ng-template>
-      <div *ngIf="addressFormGroup.valid" class="header">
-
-        <div id="pricing-end">
-          <p id="pricing-title">{{ 'pricing.calculation' | translate }}</p>
-          <mat-chip-list>
-            <mat-chip color="primary" selected> {{ (calculateThePredictedCost() * 0.8).toFixed() }} -
-              {{ (calculateThePredictedCost() * 1.2).toFixed() }} PLN</mat-chip>
-          </mat-chip-list>
-        </div>
-
-        <div id="warning">
-          <p>{{ 'pricing.warning' | translate }}</p>
-        </div>
-      </div>
 
       <div class="update-container" *ngIf="bookingControl.valid">
         <mat-card class="update-card margin-top-0">

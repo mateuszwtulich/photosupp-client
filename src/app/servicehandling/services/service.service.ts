@@ -10,114 +10,6 @@ import { IndicatorEto } from '../to/IndicatorEto';
 import { IndicatorTo } from '../to/IndicatorTo';
 import { ServiceTo } from '../to/ServiceTo';
 
-//   fuelIndicatorPL = {
-//     id: 3,
-//     name: "Odległość od Częstochowy",
-//     description: "Proszę podać liczbę kilometrów Państwa lokalizacji od Częstochowy",
-//     locale: "pl",
-//     baseAmount: 20,
-//     doublePrice: 20
-//   }
-
-//   fuelIndicatorEN = {
-//     id: 4,
-//     name: "Distance from Czestochowa",
-//     description: "Kindly provide number of kilometers to your localization from Czestochowa",
-//     locale: "en",
-//     baseAmount: 20,
-//     doublePrice: 20
-//   }
-
-//   fotoIndicators: IndicatorEto[] = [{
-//     id: 1,
-//     name: "Szacowna liczba zdjęć",
-//     description: "Dla foto takiej proponujemy taką liczbę itp",
-//     locale: "pl",
-//     baseAmount: 50,
-//     doublePrice: 200
-//   },
-// {
-//   id: 2,
-//   name: "Predicted number of photos",
-//   description: "For this kind of service we propose the number",
-//   locale: "en",
-//   baseAmount: 50,
-//   doublePrice: 200
-// },
-//   this.fuelIndicatorPL,
-//   this.fuelIndicatorEN
-//   ]
-
-//   filmIndicators: IndicatorEto[] = [{
-//     id: 5,
-//     name: "Szacowna liczba filmów",
-//     description: "Dla filmu takiego proponujemy taką liczbę filmów",
-//     locale: "pl",
-//     baseAmount: 1,
-//     doublePrice: 150
-//   },
-// {
-//   id: 6,
-//   name: "Predicted number of clips",
-//   description: "For this kind of service we propose the number",
-//   locale: "en",
-//   baseAmount: 1,
-//   doublePrice: 150
-// },
-// {
-//   id: 7,
-//   name: "Szacowna liczba minut dla filmu",
-//   description: "Dla filmu takiego typu proponujemy taką liczbę minut",
-//   locale: "pl",
-//   baseAmount: 2,
-//   doublePrice: 40
-// },
-// {
-//   id: 8,
-// name: "Predicted number of minutes for each clip",
-// description: "For this kind of service we propose the number",
-// locale: "en",
-// baseAmount: 2,
-// doublePrice: 40
-// },
-//   this.fuelIndicatorPL,
-//   this.fuelIndicatorEN
-//   ]
-  
-//   services: ServiceEto[] = [];
-//   servicesStored: ServiceEto[] = [{
-//     id: 1,
-//     name: "foto",
-//     description: "opis",
-//     locale: "pl",
-//     basePrice: 300,
-//     indicators: this.fotoIndicators
-//   },
-// {
-//   id: 2,
-//   name: "Photo",
-//   description: "Description",
-//   locale: "en",
-//   basePrice: 300,
-//   indicators: this.fotoIndicators
-// },
-// {
-//   id: 3,
-//   name: "film",
-//   description: "opis filmu",
-//   locale: "pl",
-//   basePrice: 600,
-//   indicators: this.filmIndicators
-// },
-// {
-//   id: 4,
-// name: "Film",
-// description: "Description",
-// locale: "en",
-// basePrice: 600,
-// indicators: this.filmIndicators
-// }];
-
 @Injectable({
   providedIn: 'root'
 })
@@ -211,7 +103,7 @@ export class ServiceService {
   }
 
   public deleteIndicator(id: number) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.spinnerDataSource.next(true);
       this.subscription.add(this.http.delete<void>(`${ServiceHandlingRestServicePaths.INFICATOR_PATH_WITH_ID(id)}`).subscribe(
         () => {
@@ -270,7 +162,7 @@ export class ServiceService {
   }
 
   public deleteService(id: number) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.spinnerDataSource.next(true);
       this.subscription.add(this.http.delete<void>(`${ServiceHandlingRestServicePaths.SERVICE_PATH_WITH_ID(id)}`).subscribe(
         () => {

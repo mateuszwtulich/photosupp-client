@@ -79,8 +79,7 @@
 
       <p id="pricing-title">{{ 'pricing.calculation' | translate }}</p>
       <mat-chip-list>
-        <mat-chip color="primary" selected> {{ (calculateThePredictedCost() * 0.8).toFixed() }} -
-          {{ (calculateThePredictedCost() * 1.2).toFixed() }} PLN</mat-chip>
+        <mat-chip color="primary" selected> calculateThePredictedCost() PLN</mat-chip>
       </mat-chip-list>
     </div>
     <p>{{ 'pricing.warning' | translate }}</p>

@@ -102,9 +102,9 @@
     "name": "Name",
     "name-second": "Name in foreign language",
     "locale-add": "Foreign language",
-    "delete": "Are you sure?",
+    "delete": "Are you sure you want to delete?",
     "cancel": "Cancel",
-    "delete-confirm": "Delete"
+    "delete-confirm": "Confirm"
   },
   "orders": {
     "plural": "Orders",

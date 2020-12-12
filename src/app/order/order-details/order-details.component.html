@@ -13,7 +13,7 @@
       <button id="delete" *ngxPermissionsOnly="['A_CRUD_SUPER', 'A_CRUD_ORDERS']" mat-mini-fab color="warn"
         aria-label="Delete button"
         [disabled]="order.status.includes('IN_PROGRESS') || order.status.includes('TO_VERIFY')" (click)="deleteOrder()">
-        <mat-icon id="icon">clear</mat-icon>
+        <mat-icon id="icon">delete_forever</mat-icon>
       </button>
     </div>
 
